@@ -3,6 +3,8 @@ import 'package:analog_clock/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../loading.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,9 @@ class HomeScreen extends StatelessWidget {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Loading();
+        },
         child: Container(
           width: getProportionateScreenWidth(32),
           decoration: BoxDecoration(

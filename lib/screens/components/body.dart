@@ -1,6 +1,4 @@
-import 'package:analog_clock/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'clock.dart';
 import 'country_card.dart';
