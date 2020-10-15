@@ -1,5 +1,5 @@
-import 'package:analog_clock/loading.dart';
 import 'package:analog_clock/models/my_theme_provider.dart';
+import 'package:analog_clock/screens/home_screen.dart';
 import 'package:analog_clock/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             theme: themeData(context),
             darkTheme: darkThemeData(context),
             themeMode: theme.isLightTheme ? ThemeMode.light : ThemeMode.dark,
-            home: Loading(),
+            home: HomeScreen(),
           ),
         ));
   }
