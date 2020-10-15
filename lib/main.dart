@@ -1,4 +1,5 @@
 import 'package:analog_clock/models/my_theme_provider.dart';
+import 'package:analog_clock/alarm_page/theme.dart';
 import 'package:analog_clock/screens/home_screen.dart';
 import 'package:analog_clock/theme.dart';
 import 'package:flutter/material.dart';
