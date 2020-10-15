@@ -1,7 +1,6 @@
-import 'package:analog_clock/models/my_theme_provider.dart';
 import 'package:analog_clock/alarm_page/theme.dart';
+import 'package:analog_clock/models/my_theme_provider.dart';
 import 'package:analog_clock/screens/home_screen.dart';
-import 'package:analog_clock/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  // This widget is the root of your application.z
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
