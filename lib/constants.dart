@@ -9,8 +9,8 @@ const kAccentDarkColor = Color(0xFF4E4E4E);
 const kBackgroundDarkColor = Color(0xFF3A3A3A);
 const kSurfaceDarkColor = Color(0xFF222225);
 // Icon Colors
-const kAccentIconLightColor = Color(0xFFECEFF5);
-const kAccentIconDarkColor = Color(0xFF303030);
+const kAccentIconLightColor = Color(0xFF2196F3);
+const kAccentIconDarkColor = Color(0xFFB3BFD7);
 const kPrimaryIconLightColor = Color(0xFFECEFF5);
 const kPrimaryIconDarkColor = Color(0xFF232323);
 // Text Colors

@@ -12,10 +12,6 @@ class Body extends StatelessWidget {
         width: double.infinity,
         child: Column(
           children: [
-            Text(
-              "Newport Beach, USA | PST",
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
             TimeInHourAndMinute(),
             Spacer(),
             Clock(),
@@ -26,17 +22,82 @@ class Body extends StatelessWidget {
                 children: [
                   CountryCard(
                     country: "New York, USA",
-                    timeZone: "+3 HRS | EST",
+                    timeZone: "-6 HRS ",
                     iconSrc: "assets/icons/Liberty.svg",
-                    time: "9:20",
-                    period: "PM",
+                    time: ":",
+                    url: 'America/New_York',
+
                   ),
                   CountryCard(
                     country: "Sydney, AU",
-                    timeZone: "+19 HRS | AEST",
+                    timeZone: "+9 HRS ",
                     iconSrc: "assets/icons/Sydney.svg",
-                    time: "1:20",
-                    period: "AM",
+                    time: ":",
+                    url: 'Australia/Sydney',
+                  ),
+                  CountryCard(
+                    country: "London, UK",
+                    timeZone: "-1 HRS",
+                    iconSrc: "assets/icons/big-ben.svg",
+                    time: ":",
+                    url: 'Europe/London',
+
+                  ),
+                  CountryCard(
+                    country: "Baghdad, IRQ",
+                    timeZone: "+1 HRS ",
+                    iconSrc: "assets/icons/al-shaheed-monument.svg",
+                    time: ":",
+                    url: 'Asia/Baghdad',
+
+                  ),
+                  CountryCard(
+                    country: "Istanbul, TUR",
+                    timeZone: "+1 HRS | ",
+                    iconSrc: "assets/icons/blue-mosque.svg",
+                    time: ":",
+                    url: 'Europe/Istanbul',
+
+                  ),
+                  CountryCard(
+                    country: "Dubai, UAE",
+                    timeZone: "+2 HRS ",
+                    iconSrc: "assets/icons/burj-al-arab.svg",
+                    time: ":",
+                    url: 'Asia/Dubai',
+
+                  ),
+                  CountryCard(
+                    country: "Toronto, CAN",
+                    timeZone: "-6 HRS ",
+                    iconSrc: "assets/icons/cn-tower.svg",
+                    time: ":",
+                    url: 'America/Toronto',
+
+                  ),
+                  CountryCard(
+                    country: "Paris, FRA",
+                    timeZone: "0 HRS ",
+                    iconSrc: "assets/icons/eiffel-tower.svg",
+                    time: ":",
+                    url: 'Europe/Paris',
+
+                  ),
+                  CountryCard(
+                    country: "Kuala Lumpur, MYS",
+                    timeZone: "+6 HRS ",
+                    iconSrc: "assets/icons/petronas-twin-tower.svg",
+                    time: ":",
+                    url: 'Asia/Kuala_Lumpur',
+
+                  ),
+                  CountryCard(
+                    country: "Giza, EGY",
+                    timeZone: "0 HRS ",
+                    iconSrc: "assets/icons/pyramids.svg",
+                    time: ":",
+                    url: 'Africa/Cairo',
+
                   ),
                 ],
               ),

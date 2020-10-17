@@ -3,9 +3,20 @@ import 'package:analog_clock/models/my_theme_provider.dart';
 import 'package:analog_clock/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:analog_clock/screens/splash_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainApp());
+}
+class MainApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Splash Screen',
+      home: LoadingScreen(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

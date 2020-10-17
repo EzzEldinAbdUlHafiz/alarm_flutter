@@ -68,24 +68,7 @@ class HomeScreen extends StatelessWidget {
                 return AlarmPage();
               },
             ),
-          );/*
-          MaterialApp(
-            home: Scaffold(
-              body: SafeArea(
-                child: Container(
-                  color: Colors.redAccent,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          );*/
+          );
         },
      ),
       ),

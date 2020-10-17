@@ -6,7 +6,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
-
+import 'package:analog_clock/alarm_page/Switch_calss.dart';
 class AlarmPage extends StatefulWidget {
   @override
   _AlarmPageState createState() => _AlarmPageState();
@@ -18,6 +18,13 @@ class _AlarmPageState extends State<AlarmPage> {
   AlarmHelper _alarmHelper = AlarmHelper();
   Future<List<AlarmInfo>> _alarms;
   List<Color> color = [Colors.blue[900], Colors.blue[700], Colors.blue[500]];
+  bool _value = true;
+
+  void _onChanged(bool value) {
+    setState(() {
+      _value = value;
+    });
+  }
 
   @override
   void initState() {
@@ -105,11 +112,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                       ),
                                     ],
                                   ),
-                                  Switch(
-                                    onChanged: (bool value) {},
-                                    value: true,
-                                    activeColor: Colors.white,
-                                  ),
+                                  Switchh(),
                                 ],
                               ),
                               Text(
@@ -213,6 +216,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                                   ),
                                                 ),
                                                 ListTile(
+                                                  onTap: () {},
                                                   title: Text('Repeat'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
@@ -301,6 +305,8 @@ class _AlarmPageState extends State<AlarmPage> {
       ),
     ));
   }
+
+
 
   void scheduleAlarm(DateTime scheduledNotificationDateTime) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
