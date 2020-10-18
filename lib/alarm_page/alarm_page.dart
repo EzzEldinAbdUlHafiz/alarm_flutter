@@ -115,11 +115,6 @@ class _AlarmPageState extends State<AlarmPage> {
                                   Switchh(),
                                 ],
                               ),
-                              Text(
-                                'Mon-Fri',
-                                style: TextStyle(
-                                    color: Colors.white, fontFamily: 'avenir'),
-                              ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -182,7 +177,9 @@ class _AlarmPageState extends State<AlarmPage> {
                                             child: Column(
                                               children: [
                                                 FlatButton(
-                                                  onPressed: () async {
+                                                  onPressed: () async {setState(() {
+
+                                                  });
                                                     var selectedTime =
                                                         await showTimePicker(
                                                       context: context,
@@ -216,7 +213,9 @@ class _AlarmPageState extends State<AlarmPage> {
                                                   ),
                                                 ),
                                                 ListTile(
-                                                  onTap: () {},
+                                                  onTap: () {
+
+                                                  },
                                                   title: Text('Repeat'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
@@ -232,7 +231,8 @@ class _AlarmPageState extends State<AlarmPage> {
                                                       Icons.arrow_forward_ios),
                                                 ),
                                                 FloatingActionButton.extended(
-                                                  onPressed: () async {
+                                                  onPressed: () async {setState(() {
+                                                  });
                                                     DateTime
                                                         scheduleAlarmDateTime;
                                                     if (_alarmTime.isAfter(
