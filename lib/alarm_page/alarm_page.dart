@@ -1,12 +1,14 @@
+import 'package:analog_clock/alarm_page/Switch_calss.dart';
 import 'package:analog_clock/alarm_page/alarm_helper.dart';
 import 'package:analog_clock/alarm_page/alarm_info.dart';
 import 'package:analog_clock/alarm_page/data.dart';
 import 'package:analog_clock/alarm_page/theme_data.dart';
+import 'package:analog_clock/alarm_page/title.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
-import 'package:analog_clock/alarm_page/Switch_calss.dart';
+
 class AlarmPage extends StatefulWidget {
   @override
   _AlarmPageState createState() => _AlarmPageState();
@@ -177,9 +179,8 @@ class _AlarmPageState extends State<AlarmPage> {
                                             child: Column(
                                               children: [
                                                 FlatButton(
-                                                  onPressed: () async {setState(() {
-
-                                                  });
+                                                  onPressed: () async {
+                                                    setState(() {});
                                                     var selectedTime =
                                                         await showTimePicker(
                                                       context: context,
@@ -213,26 +214,28 @@ class _AlarmPageState extends State<AlarmPage> {
                                                   ),
                                                 ),
                                                 ListTile(
-                                                  onTap: () {
-
-                                                  },
-                                                  title: Text('Repeat'),
-                                                  trailing: Icon(
-                                                      Icons.arrow_forward_ios),
-                                                ),
-                                                ListTile(
                                                   title: Text('Sound'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
                                                 ),
                                                 ListTile(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) {
+                                                          return HomePage();
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
                                                   title: Text('Title'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
                                                 ),
                                                 FloatingActionButton.extended(
-                                                  onPressed: () async {setState(() {
-                                                  });
+                                                  onPressed: () async {
+                                                    setState(() {});
                                                     DateTime
                                                         scheduleAlarmDateTime;
                                                     if (_alarmTime.isAfter(
@@ -305,8 +308,6 @@ class _AlarmPageState extends State<AlarmPage> {
       ),
     ));
   }
-
-
 
   void scheduleAlarm(DateTime scheduledNotificationDateTime) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(

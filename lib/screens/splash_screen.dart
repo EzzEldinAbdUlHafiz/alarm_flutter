@@ -1,11 +1,7 @@
-import 'dart:async';
-import 'package:analog_clock/screens/home_screen.dart';
-import 'package:analog_clock/screens/splash_screen.dart';
+import 'package:analog_clock/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:analog_clock/main.dart';
 import 'package:splashscreen/splashscreen.dart';
-
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -14,28 +10,32 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
-  void _navigateToHome(){ Navigator.push(
-      context , MaterialPageRoute(
-    builder:(BuildContext context)=> MyApp(),
-  )
-  );
+  void _navigateToHome() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => MyApp(),
+        ));
   }
+
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
       backgroundColor: Colors.blueGrey,
       seconds: 5,
       navigateAfterSeconds: new MyApp(),
-      title: new Text('Clock',textScaleFactor: 2,),
-      image: new Image.asset('assets/other/clock.png') ,
+      title: new Text(
+        'Clock',
+        textScaleFactor: 2,
+      ),
+      image: new Image.asset('assets/other/clock_icon.png'),
       loadingText: Text("Loading"),
       photoSize: 100.0,
-      loaderColor: Colors.black ,
-
+      loaderColor: Colors.black,
     );
   }
 }
