@@ -6,7 +6,6 @@ import 'package:analog_clock/alarm_page/theme_data.dart';
 import 'package:analog_clock/alarm_page/title.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 
 class AlarmPage extends StatefulWidget {
@@ -66,82 +65,86 @@ class _AlarmPageState extends State<AlarmPage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData)
                     return ListView(
-                      children: snapshot.data.map<Widget>((alarm) {
-                        var alarmTime =
-                            DateFormat('hh:mm aa').format(alarm.alarmDateTime);
-                        var gradientColor = GradientTemplate
-                            .gradientTemplate[alarm.gradientColorIndex].colors;
-                        return Container(
-                          margin: const EdgeInsets.only(bottom: 32),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: color,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
+                      children: snapshot.data.map<Widget>(
+                        (alarm) {
+                          var alarmTime = DateFormat('hh:mm aa')
+                              .format(alarm.alarmDateTime);
+                          var gradientColor = GradientTemplate
+                              .gradientTemplate[alarm.gradientColorIndex]
+                              .colors;
+                          return Container(
+                            margin: const EdgeInsets.only(bottom: 32),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: color,
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: gradientColor.last.withOpacity(0.4),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
+                                  offset: Offset(4, 4),
+                                ),
+                              ],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(24)),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: gradientColor.last.withOpacity(0.4),
-                                blurRadius: 8,
-                                spreadRadius: 2,
-                                offset: Offset(4, 4),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.label,
-                                        color: Colors.white,
-                                        size: 24,
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        alarm.title,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'avenir'),
-                                      ),
-                                    ],
-                                  ),
-                                  Switchh(),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    alarmTime,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'avenir',
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.delete),
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      _alarmHelper.delete(alarm.id);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      }).followedBy([
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.label,
+                                          color: Colors.white,
+                                          size: 24,
+                                        ),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          alarm.title,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'avenir'),
+                                        ),
+                                      ],
+                                    ),
+                                    Switchh(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      alarmTime,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'avenir',
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(Icons.delete),
+                                      color: Colors.white,
+                                      onPressed: () {
+                                        _alarmHelper.delete(alarm.id);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ).followedBy([
                         if (alarms.length < 5)
                           DottedBorder(
                             strokeWidth: 2,
@@ -309,28 +312,28 @@ class _AlarmPageState extends State<AlarmPage> {
     ));
   }
 
-  void scheduleAlarm(DateTime scheduledNotificationDateTime) async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'alarm_notif',
-      'alarm_notif',
-      'Channel for Alarm notification',
-      icon: 'codex_logo',
-      sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-      largeIcon: DrawableResourceAndroidBitmap('codex_logo'),
-    );
-
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-        sound: 'a_long_cold_sting.wav',
-        presentAlert: true,
-        presentBadge: true,
-        presentSound: true);
-    /* var platformChannelSpecifics = NotificationDetails(
-        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-   await flutterLocalNotificationsPlugin.schedule(
-        0,
-        'Office',
-        'Good morning! Time for office.',
-        scheduledNotificationDateTime,
-        platformChannelSpecifics);*/
-  }
+  // void scheduleAlarm(DateTime scheduledNotificationDateTime) async {
+  //   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+  //     'alarm_notif',
+  //     'alarm_notif',
+  //     'Channel for Alarm notification',
+  //     icon: 'codex_logo',
+  //     sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
+  //     largeIcon: DrawableResourceAndroidBitmap('codex_logo'),
+  //   );
+  //
+  //   var iOSPlatformChannelSpecifics = IOSNotificationDetails(
+  //       sound: 'a_long_cold_sting.wav',
+  //       presentAlert: true,
+  //       presentBadge: true,
+  //       presentSound: true);
+  //   /* var platformChannelSpecifics = NotificationDetails(
+  //       androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+  //  await flutterLocalNotificationsPlugin.schedule(
+  //       0,
+  //       'Office',
+  //       'Good morning! Time for office.',
+  //       scheduledNotificationDateTime,
+  //       platformChannelSpecifics);*/
+  // }
 }
