@@ -11,7 +11,6 @@ class _HomePageState extends State {
   String _selectedParam;
   String task;
   int val;
-
   @override
   void initState() {
     super.initState();
@@ -32,9 +31,6 @@ class _HomePageState extends State {
     var generalNotificationDetails =
         new NotificationDetails(androidDetails, iSODetails);
 
-    // await fltrNotification.show(
-    //     0, "Task", "You created a Task", generalNotificationDetails, payload: "Task");
-
     var scheduledTime;
     if (_selectedParam == "Hour") {
       scheduledTime = DateTime.now().add(Duration(hours: val));
@@ -46,11 +42,6 @@ class _HomePageState extends State {
     fltrNotification.schedule(
         1, "Times Uppp", task, scheduledTime, generalNotificationDetails);
   }
-
-  // var now = new DateTime.now();
-  // var later = now.add(const Duration(seconds: 5));
-  // assert(!later.isAtSameMomentAs(now));
-  // assert(now.isAtSameMomentAs(now));
 
   @override
   Widget build(BuildContext context) {

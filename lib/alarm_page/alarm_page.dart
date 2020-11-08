@@ -1,9 +1,10 @@
 import 'package:analog_clock/alarm_page/Switch_calss.dart';
 import 'package:analog_clock/alarm_page/alarm_helper.dart';
 import 'package:analog_clock/alarm_page/alarm_info.dart';
+import 'package:analog_clock/alarm_page/alarm_setter.dart';
 import 'package:analog_clock/alarm_page/data.dart';
+import 'package:analog_clock/alarm_page/local_notification.dart';
 import 'package:analog_clock/alarm_page/theme_data.dart';
-import 'package:analog_clock/alarm_page/title.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -67,8 +68,8 @@ class _AlarmPageState extends State<AlarmPage> {
                     return ListView(
                       children: snapshot.data.map<Widget>(
                         (alarm) {
-                          var alarmTime = DateFormat('hh:mm aa')
-                              .format(alarm.alarmDateTime);
+                          var alarmTime =
+                              DateFormat('HH:mm').format(alarm.alarmDateTime);
                           var gradientColor = GradientTemplate
                               .gradientTemplate[alarm.gradientColorIndex]
                               .colors;
@@ -239,6 +240,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                                 FloatingActionButton.extended(
                                                   onPressed: () async {
                                                     setState(() {});
+                                                    AlarmSetter();
                                                     DateTime
                                                         scheduleAlarmDateTime;
                                                     if (_alarmTime.isAfter(
@@ -311,29 +313,4 @@ class _AlarmPageState extends State<AlarmPage> {
       ),
     ));
   }
-
-  // void scheduleAlarm(DateTime scheduledNotificationDateTime) async {
-  //   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-  //     'alarm_notif',
-  //     'alarm_notif',
-  //     'Channel for Alarm notification',
-  //     icon: 'codex_logo',
-  //     sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-  //     largeIcon: DrawableResourceAndroidBitmap('codex_logo'),
-  //   );
-  //
-  //   var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-  //       sound: 'a_long_cold_sting.wav',
-  //       presentAlert: true,
-  //       presentBadge: true,
-  //       presentSound: true);
-  //   /* var platformChannelSpecifics = NotificationDetails(
-  //       androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-  //  await flutterLocalNotificationsPlugin.schedule(
-  //       0,
-  //       'Office',
-  //       'Good morning! Time for office.',
-  //       scheduledNotificationDateTime,
-  //       platformChannelSpecifics);*/
-  // }
 }

@@ -1,4 +1,5 @@
 import 'package:analog_clock/alarm_page/alarm_page.dart';
+import 'package:analog_clock/alarm_page/local_notification.dart';
 import 'package:analog_clock/screens/components/body.dart';
 import 'package:analog_clock/size_config.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,16 @@ class HomeScreen extends StatelessWidget {
           "assets/icons/Settings.svg",
           color: Theme.of(context).iconTheme.color,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return HomePage();
+              },
+            ),
+          );
+        },
       ),
       actions: [buildAddButton(context)],
     );
@@ -42,22 +52,6 @@ class HomeScreen extends StatelessWidget {
           child: Icon(
             Icons.add,
             color: Colors.white,
-            //padding:
-            //EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
-            //child: InkWell(
-            //onTap: () {
-            //Loading();
-            //},
-            //child: Container(
-            //width: getProportionateScreenWidth(32),
-            //decoration: BoxDecoration(
-            //color: Theme.of(context).primaryColor,
-            //shape: BoxShape.circle,
-            //),
-            //child: Icon(
-            //Icons.add,
-            //color: Colors.white,
-            //),
           ),
           onPressed: () {
             Navigator.push(

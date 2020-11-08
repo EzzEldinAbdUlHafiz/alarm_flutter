@@ -26,4 +26,7 @@ class AlarmInfo {
         "isPending": isPending,
         "gradientColorIndex": gradientColorIndex,
       };
+  DateTime getTheTime() {
+    return alarmDateTime;
+  }
 }
